@@ -27,9 +27,9 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 let g:prettier#quickfix_auto_focus = 0
 let g:prettier#autoformat = 0
-autocmd BufWritePre *.js,*.css,*.less,*.scss,*.json,*.md,*.vue,*.html,*.jsx Prettier
+autocmd BufWritePre *.js,*.css,*.less,*.scss,*.json,*.md,*.html,*.jsx Prettier
 
-let g:NERDTreeIgnore = ['node_modules', 'package-lock.json', '^\.git$', '.swp', '.cache', 'dist', 'build']
+let g:NERDTreeIgnore = ['node_modules', 'package-lock.json', '^\.git$', '.swp', '.cache', 'dist', 'build', '.expo-shared', '.nyc_output']
 let g:NERDTreeShowHidden = 1
 let g:NERDSpaceDelims = 1
 
@@ -64,8 +64,6 @@ inoremap <Right> <NOP>
 inoremap <C-U> <Esc>viwUea
 inoremap <C-l> <Esc>A
 
-noremap <leader>d dd
-noremap <leader>O ddO
 noremap <leader>U viwUe
 noremap <leader>u viwue
 
