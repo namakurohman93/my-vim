@@ -19,6 +19,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'sheerun/vim-polyglot'
 Plug 'prettier/vim-prettier', { 'do': 'npm install', 'for': ['javascript', 'css', 'less', 'scss', 'json', 'markdown', 'vue', 'jsx', 'html'] }
 Plug 'tpope/vim-surround'
+Plug 'mattn/emmet-vim'
 
 call plug#end()
 
@@ -27,14 +28,14 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 let g:prettier#quickfix_auto_focus = 0
 let g:prettier#autoformat = 0
-autocmd BufWritePre *.js,*.css,*.less,*.scss,*.json,*.md,*.html,*.jsx Prettier
+autocmd BufWritePre *.js,*.css,*.less,*.scss,*.json,*.md,*.html,*.jsx,*.ts Prettier
 
-let g:NERDTreeIgnore = ['node_modules', 'package-lock.json', '^\.git$', '.swp', '.cache', 'dist', 'build', '.expo-shared', '.nyc_output']
+let g:NERDTreeIgnore = ['node_modules', 'package-lock.json', '^\.git$', '.swp', '.cache',  'build', '.expo-shared', '.nyc_output']
 let g:NERDTreeShowHidden = 1
 let g:NERDSpaceDelims = 1
 
 let g:prettier#config#bracket_spacing = 'true'
-let g:prettier#config#semi = 'false'
+let g:prettier#config#semi = 'true'
 
 let mapleader = "\<space>"
 
@@ -67,8 +68,8 @@ inoremap <C-l> <Esc>A
 noremap <leader>U viwUe
 noremap <leader>u viwue
 
-noremap <leader>ev :vsplit $MYVIMRC<cr>
-noremap <leader>sv :source $MYVIMRC<cr>
+noremap <leader>ve :vsplit $MYVIMRC<cr>
+noremap <leader>vs :source $MYVIMRC<cr>
 " noremap <leader>" viw<Esc>a"<Esc>bi"<esc>lel
 
 noremap H <S-^>
@@ -91,5 +92,15 @@ endfunction
 
 noremap <leader>VUE :call PrintVueTemplate()<CR>ggdd
 noremap <leader>HTML :call PrintHTMLTemplate()<CR>ggdd
+
 au InsertEnter * silent execute "!echo -en \<esc>[3 q"
 au InsertLeave * silent execute "!echo -en \<esc>[2 q"
+
+" emmet mapping
+" <C-y> emmet leader key is already used by default for scrolling vim window
+let g:user_emmet_leader_key='<C-K>'
+let g:user_emmet_mode='iv'
+nmap <leader>e, i<C-K>,<Esc>
+nmap <leader>ej i<C-K>j<Esc>
+
+vmap <leader>e, <C-K>,
